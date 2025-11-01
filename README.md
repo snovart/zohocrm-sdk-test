@@ -56,17 +56,6 @@ A helper command can be created to sync all modules at once:
 php artisan zoho:sync:all --since="2025-01-01T00:00:00Z"
 ```
 
-### Scheduled Sync Example
-
-You can configure periodic synchronization via the Laravel scheduler:
-
-```php
-protected function schedule(Schedule $schedule): void
-{
-    $schedule->command('zoho:sync:all')->everyTenMinutes();
-}
-```
-
 ## Upsert Logic
 
 Synchronization does **not** truncate or overwrite tables.  
@@ -93,18 +82,11 @@ Deleted Zoho records are currently ignored (soft-deletion not implemented).
 Example `.env` configuration for Zoho SDK:
 
 ```env
-ZOHO_SDK_REDIS_PREFIX=z9nfosh1Wa6K70WL
-ZOHO_CRM_VERIFY_TOKEN=oMfYVcohuW1pTtNHEHul5fr4srOAvWSL
-ZOHO_SDK_DATACENTER=EU
+ZOHO_SDK_REDIS_PREFIX=
+ZOHO_CRM_VERIFY_TOKEN=
 
-ZOHO_CRM_CLIENT_ID=1000.OBA1SP6XVS1TRPLIG0YAG0OTAHMW7S
-ZOHO_CRM_CLIENT_SECRET=93a9aa5de38672fc3348ae49c939f5a8112353a3f7
-
-ZOHO_CRM_ACCOUNTS_URL=https://accounts.zoho.eu
-ZOHO_CRM_API_BASE_URL=https://www.zohoapis.eu
-ZOHO_CRM_DC=eu
-ZOHO_REDIRECT_URI=http://127.0.0.1:8000/zoho/oauth/callback
-ZOHO_REFRESH_TOKEN=1000.505d14d38e0cef7f38a19834ad79cfc8.b0b8134026bdd48970738564aa3137c8
+ZOHO_CRM_CLIENT_ID=
+ZOHO_CRM_CLIENT_SECRET=
 ```
 
 ## Error Handling
